@@ -5,7 +5,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <InfoSection fields={[{type: "text", placeholder: "First Name"}]}
+                <InfoSection fieldset={[{type: "text", placeholder: "First Name"},
+                {type: "text", placeholder: "Last Name"}]}
                 heading="Personal Info"></InfoSection>
             </div>
         )

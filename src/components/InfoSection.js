@@ -1,16 +1,21 @@
 import React, {Component} from "react";
-import Field from "./Field";
+import Fieldset from "./Fieldset";
 
 class InfoSection extends Component {
+
     constructor(props) {
         super(props);
-        this.state = {fieldsCount: 1};
+        this.state = {fieldsetCount: 2};
     }
     render() {
+        let fieldsets = [];
+        for (let i = 0; i < this.state.fieldsetCount; ++i) {
+            fieldsets.push(this.props.fieldset);
+        }
         return (
             <section>
                 <h2>{this.props.heading}</h2>
-                {this.props.fields.map(field => <Field fieldType={field.type} fieldPlaceholder={field.placeholder}></Field>)}
+                {fieldsets.map(fieldset => <Fieldset fields={fieldset}></Fieldset>)}
             </section>
         )
     }
