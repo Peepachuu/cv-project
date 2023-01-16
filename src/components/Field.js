@@ -4,7 +4,7 @@ class Field extends Component {
     render() {
         const {fieldType, fieldPlaceholder} = this.props;
         return (
-            <input type={fieldType} placeholder={fieldPlaceholder}></input>
+            <input type={fieldType} placeholder={fieldPlaceholder} required></input>
         )
     }
 }

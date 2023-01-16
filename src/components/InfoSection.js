@@ -5,7 +5,7 @@ class InfoSection extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {fieldsetCount: 2};
+        this.state = {fieldsetCount: 1};
     }
     render() {
         let fieldsets = [];
@@ -13,7 +13,7 @@ class InfoSection extends Component {
             fieldsets.push(this.props.fieldset);
         }
         return (
-            <section>
+            <section className={this.props.heading}>
                 <h2>{this.props.heading}</h2>
                 {fieldsets.map(fieldset => <Fieldset fields={fieldset}></Fieldset>)}
             </section>

@@ -5,9 +5,9 @@ class Fieldset extends Component {
 
     render() {
         return (
-            <section>
+            <fieldset>
                 {this.props.fields.map(field => <Field fieldType={field.type} fieldPlaceholder={field.placeholder}></Field>)}
-            </section>
+            </fieldset>
         )
     }
 }

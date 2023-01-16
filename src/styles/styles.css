@@ -1,0 +1,11 @@
+fieldset {
+    border: none;
+    display: grid;
+    gap: 8px;
+    padding: 0px;
+}
+
+input {
+    font-size: 1.2rem;
+    padding: 4px 2px;
+}
