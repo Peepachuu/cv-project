@@ -1,3 +1,13 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --secondary-background-color: rgb(51, 51, 51);
+    --main-background-color: rgb(238, 238, 238);
+}
+
 fieldset {
     border: none;
     display: grid;
@@ -8,4 +18,27 @@ fieldset {
 input {
     font-size: 1.2rem;
     padding: 4px 2px;
+}
+
+header, footer {
+    text-align: center;
+    background-color: var(--secondary-background-color);
+}
+
+header {
+    font-size: 1.5rem;
+    padding: 16px 0px;
+}
+
+footer {
+    font-size: 1.2rem;
+    padding: 8px 0;
+}
+
+body {
+    background-color: var(--main-background-color);
+}
+
+form {
+    padding: 16px 32px;
 }
