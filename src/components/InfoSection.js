@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import Fieldset from "./Fieldset";
 
 class InfoSection extends Component {
 
@@ -7,6 +6,7 @@ class InfoSection extends Component {
         super(props);
         this.state = {fieldsetCount: 1};
     }
+    
     render() {
         let fieldsets = [];
         for (let i = 0; i < this.state.fieldsetCount; ++i) {
@@ -15,7 +15,13 @@ class InfoSection extends Component {
         return (
             <section className={this.props.heading}>
                 <h2>{this.props.heading}</h2>
-                {fieldsets.map(fieldset => <Fieldset fields={fieldset}></Fieldset>)}
+                {fieldsets.map(fieldset => (
+                    <fieldset>
+                        {fieldset.map(field => (
+                            <input type={field.type} placeholder={field.placeholder} required/>
+                        ))}
+                    </fieldset>
+                ))}
             </section>
         )
     }

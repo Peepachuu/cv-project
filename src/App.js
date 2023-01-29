@@ -5,6 +5,19 @@ import Footer from "./components/Footer";
 import "./styles/styles.css";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            educationAndTraining: [],
+            personalInfo: [],
+            workExperience: []
+        };
+    }
+
+    handleChange(e) {
+        
+    }
+
     render() {
         return (
             <div>
