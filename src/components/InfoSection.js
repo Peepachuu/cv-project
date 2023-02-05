@@ -1,24 +1,23 @@
 import React, {Component} from "react";
 
 class InfoSection extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {fieldsetCount: 1};
-    }
     
     render() {
-        let fieldsets = [];
-        for (let i = 0; i < this.state.fieldsetCount; ++i) {
-            fieldsets.push(this.props.fieldset);
-        }
+        
+        const {fieldsets, heading, handleChange} = this.props;
+        console.log(fieldsets);
         return (
-            <section className={this.props.heading}>
-                <h2>{this.props.heading}</h2>
+            <section className={heading}>
+                <h2>{heading}</h2>
                 {fieldsets.map(fieldset => (
                     <fieldset>
-                        {fieldset.map(field => (
-                            <input type={field.type} placeholder={field.placeholder} required/>
+                        {fieldset.data.map(field => (
+                            <input 
+                                type={field.type} 
+                                placeholder={field.placeholder} 
+                                onChange={(e) => {handleChange(e, fieldset.id)}} 
+                                required
+                            />
                         ))}
                     </fieldset>
                 ))}
