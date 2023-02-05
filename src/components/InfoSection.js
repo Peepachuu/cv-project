@@ -3,9 +3,8 @@ import React, {Component} from "react";
 class InfoSection extends Component {
     
     render() {
-        
-        const {fieldsets, heading, handleChange} = this.props;
-        console.log(fieldsets);
+        const {heading, fieldsets, handleChange} = this.props;
+
         return (
             <section className={heading}>
                 <h2>{heading}</h2>
@@ -16,6 +15,8 @@ class InfoSection extends Component {
                                 type={field.type} 
                                 placeholder={field.placeholder} 
                                 onChange={(e) => {handleChange(e, fieldset.id)}} 
+                                name={field.name}
+                                value={field.value}
                                 required
                             />
                         ))}
