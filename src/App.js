@@ -38,7 +38,6 @@ class App extends Component {
     }
 
     handleChange(e, id) {
-        console.log(id);
         this.setState(this.state.infosets.map(infoset => {
             return infoset.map(fieldset => {
                 if (fieldset.id === id) {
@@ -56,33 +55,35 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <section className="main">
                 <Header></Header>
-            <form>
-                <InfoSection 
-                    fieldsets={this.state.infosets[0]} 
-                    heading="Personal Info"
-                    handleChange={this.handleChange}
-                >
-                </InfoSection>
+                <div className="container">
+                <form>
+                    <InfoSection 
+                        fieldsets={this.state.infosets[0]} 
+                        heading="Personal Info"
+                        handleChange={this.handleChange}
+                    >
+                    </InfoSection>
 
-                <InfoSection 
-                    fieldsets={this.state.infosets[1]} 
-                    heading="Education and Training"
-                    handleChange={this.handleChange}
-                >
-                </InfoSection>
+                    <InfoSection 
+                        fieldsets={this.state.infosets[1]} 
+                        heading="Education and Training"
+                        handleChange={this.handleChange}
+                    >
+                    </InfoSection>
 
-                <InfoSection 
-                    fieldsets={this.state.infosets[2]} 
-                    heading="Work Experience"
-                    handleChange={this.handleChange}
-                >
-                </InfoSection>
-                <button>Submit</button>
-            </form>
+                    <InfoSection 
+                        fieldsets={this.state.infosets[2]} 
+                        heading="Work Experience"
+                        handleChange={this.handleChange}
+                    >
+                    </InfoSection>
+                    <button>Submit</button>
+                </form>
+                </div>
                 <Footer></Footer>
-            </div>
+            </section>
         )
     }
 }

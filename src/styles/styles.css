@@ -6,6 +6,9 @@
 :root {
     --secondary-background-color: rgb(51, 51, 51);
     --main-background-color: rgb(238, 238, 238);
+    --secondary-text-color: rgb(238, 238, 238);
+    --darker-background-color: #ccc;
+    --hover-color: #222;
 }
 
 fieldset {
@@ -17,12 +20,15 @@ fieldset {
 
 input {
     font-size: 1.2rem;
-    padding: 4px 2px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    border: transparent;
 }
 
 header, footer {
     text-align: center;
     background-color: var(--secondary-background-color);
+    color: var(--secondary-text-color);
 }
 
 header {
@@ -36,9 +42,35 @@ footer {
 }
 
 body {
-    background-color: var(--main-background-color);
+    background-color: var(--darker-background-color);
 }
 
 form {
     padding: 16px 32px;
+    background-color: var(--main-background-color);
+    align-self: center;
+    border-radius: 8px;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    padding: 8px 0px;
+}
+
+.container {
+    padding: 2rem 10rem;
+}
+
+button {
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-text-color);
+    font-size: 1.2rem;
+    padding: 10px 0;
+    border-radius: 4px;
+    border: transparent;
+    width: 100%;
+}
+
+button:hover {
+    background-color: var(--hover-color);
 }
