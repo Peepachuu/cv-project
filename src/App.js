@@ -37,6 +37,7 @@ class App extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     clone(obj){
@@ -51,7 +52,7 @@ class App extends Component {
     }
 
     handleChange(e, id) {
-        this.setState(this.state.infosets.map(infoset => {
+        this.setState({infosets: this.state.infosets.map(infoset => {
             return infoset.map(fieldset => {
                 if (fieldset.id === id) {
                     fieldset.data.map(field => {
@@ -63,7 +64,7 @@ class App extends Component {
                 }
                 return fieldset;
             });
-        }));
+        })});
     }
 
     handleAdd(heading) {
@@ -86,6 +87,13 @@ class App extends Component {
         this.setState({infosets: infosetsClone});
     }
 
+    handleDelete(id) {
+        let infosetClone = this.clone(this.state.infosets);
+        this.setState({infosets : infosetClone.map(infoset => {
+            return infoset.filter((fieldset) => fieldset.id !== id)
+        })});
+    }
+
     render() {
         return (
             <section className="main">
@@ -97,6 +105,7 @@ class App extends Component {
                         heading="Personal Info"
                         handleChange={this.handleChange}
                         handleAdd={this.handleAdd}
+                        handleDelete={this.handleDelete}
                         canAddDel={false}
                     >
                     </InfoSection>
@@ -106,6 +115,7 @@ class App extends Component {
                         heading="Education and Training"
                         handleChange={this.handleChange}
                         handleAdd={this.handleAdd}
+                        handleDelete={this.handleDelete}
                         canAddDel={true}
                     >
                     </InfoSection>
@@ -115,6 +125,7 @@ class App extends Component {
                         heading="Work Experience"
                         handleChange={this.handleChange}
                         handleAdd={this.handleAdd}
+                        handleDelete={this.handleDelete}
                         canAddDel={true}
                     >
                     </InfoSection>

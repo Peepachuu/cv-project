@@ -3,7 +3,7 @@ import React, {Component} from "react";
 class InfoSection extends Component {
     
     render() {
-        const {heading, fieldsets, handleChange, canAddDel, handleAdd} = this.props;
+        const {heading, fieldsets, handleChange, canAddDel, handleAdd, handleDelete} = this.props;
 
         return (
             <section className={heading}>
@@ -21,7 +21,7 @@ class InfoSection extends Component {
                                 required
                             />
                         ))}
-                        {canAddDel && <button>Delete</button>}
+                        {canAddDel && <button type="button" onClick={() => {handleDelete(fieldset.id)}}>Delete</button>}
                     </fieldset>
                 ))}
                 {canAddDel && <button type="button" onClick={() => {handleAdd(heading)}}>Add</button>}
