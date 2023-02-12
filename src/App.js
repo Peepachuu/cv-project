@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./styles/styles.css";
 import uniqid from "uniqid";
+import CVPreview from "./components/CVPreview";
 
 class App extends Component {
     constructor() {
@@ -131,6 +132,13 @@ class App extends Component {
                     </InfoSection>
                     <button>Submit</button>
                 </form>
+                </div>
+                <div className="container">
+                <CVPreview 
+                    firstName={this.state.infosets[0][0].data[0].value}
+                    lastName={this.state.infosets[0][0].data[1].value}
+                >
+                </CVPreview>
                 </div>
                 <Footer></Footer>
             </section>

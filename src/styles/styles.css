@@ -8,6 +8,7 @@
     --main-background-color: rgb(238, 238, 238);
     --secondary-text-color: rgb(238, 238, 238);
     --darker-background-color: #ccc;
+    --pop-color: rgb(20, 62, 114);
     --hover-color: #222;
 }
 
@@ -53,12 +54,17 @@ form {
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
+.formSection {
+    display: grid;
+    gap: 8px;
+}
+
 h2 {
     padding: 8px 0px;
 }
 
 .container {
-    padding: 2rem 10rem;
+    padding: 3rem 14rem;
 }
 
 button {
@@ -73,4 +79,11 @@ button {
 
 button:hover {
     background-color: var(--hover-color);
+}
+
+.Preview h2 {
+    background-color: var(--pop-color);
+    color: var(--main-background-color);
+    font-size: 2.5rem;
+    padding: 8px;
 }

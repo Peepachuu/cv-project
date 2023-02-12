@@ -6,7 +6,7 @@ class InfoSection extends Component {
         const {heading, fieldsets, handleChange, canAddDel, handleAdd, handleDelete} = this.props;
 
         return (
-            <section className={heading}>
+            <section className="formSection">
                 <h2>{heading}</h2>
                 {fieldsets.map(fieldset => (
                     <fieldset key={fieldset.id}>
