@@ -18,16 +18,16 @@ class App extends Component {
         ];
 
         this.defaultEducation = [
-            {type: "text", placeholder: "Title of qualification awarded", name:"qualification", value:""},
-            {type: "text", placeholder: "Organization that provided said title", name:"organizaation", value:""}, 
-            {type: "date", placeholder: "From", name:"startDate", value:""},
-            {type: "date", placeholder: "To", name:"endDate", value:""}
+            {type: "text", placeholder: "Title of qualification awarded", name:"Qualification", value:""},
+            {type: "text", placeholder: "Organization that provided said title", name:"Organization", value:""}, 
+            {type: "text", placeholder: "From", name:"startDate", value:""},
+            {type: "text", placeholder: "To", name:"endDate", value:""}
         ];
         this.defaultWorkExp = [
-            {type: "text", placeholder: "Title of the occupation", name:"occupation", value:""},
-            {type: "text", placeholder: "Employer", name:"employer", value:""}, 
-            {type: "date", placeholder: "From", name:"startDate", value:""},
-            {type: "date", placeholder: "To", name:"endDate", value:""}
+            {type: "text", placeholder: "Title of the occupation", name:"Occupation", value:""},
+            {type: "text", placeholder: "Employer", name:"Employer", value:""}, 
+            {type: "text", placeholder: "From", name:"startDate", value:""},
+            {type: "text", placeholder: "To", name:"endDate", value:""}
         ];
         this.state = {
             infosets: [
@@ -135,8 +135,9 @@ class App extends Component {
                 </div>
                 <div className="container">
                 <CVPreview 
-                    firstName={this.state.infosets[0][0].data[0].value}
-                    lastName={this.state.infosets[0][0].data[1].value}
+                    personalInfo={this.state.infosets[0][0]}
+                    educationInfo={this.state.infosets[1]}
+                    experienceInfo={this.state.infosets[2]}
                 >
                 </CVPreview>
                 </div>
