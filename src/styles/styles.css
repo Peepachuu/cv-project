@@ -82,11 +82,19 @@ button:hover {
 }
 
 .Preview h2 {
-    background-color: var(--pop-color);
-    color: var(--main-background-color);
     font-size: 2.5rem;
-    padding: 8px;
+    padding: 4px;
     min-height: 3rem;
+}
+
+.personal {
+    color: var(--main-background-color);
+    background-color: var(--pop-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    font-size: 1.2rem;
 }
 
 .Preview h3 {

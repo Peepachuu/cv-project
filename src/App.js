@@ -130,7 +130,6 @@ class App extends Component {
                         canAddDel={true}
                     >
                     </InfoSection>
-                    <button>Submit</button>
                 </form>
                 </div>
                 <div className="container">

@@ -6,7 +6,13 @@ class CVPreview extends Component {
         const {personalInfo, educationInfo, experienceInfo} = this.props;
         return (
             <section className="Preview">
-                <h2>{personalInfo.data[0].value} {personalInfo.data[1].value}</h2>
+                <section className="personal">
+                    <h2>{personalInfo.data[0].value} {personalInfo.data[1].value}</h2>
+                    <div>
+                        <div>{personalInfo.data[2].value}</div>
+                        <div>{personalInfo.data[3].value}</div>
+                    </div>
+                </section>
                 <section className="main">
                     <section>
                         <h3>Experience</h3>
