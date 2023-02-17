@@ -1,13 +1,11 @@
-import React, {Component} from "react";
+import React from "react";
 
-class Footer extends Component {
-    render() {
-        return (
-            <footer>
-                Copyright © 2023 Peepachu
-            </footer>
-        )
-    }
+function Footer() {
+    return (
+        <footer>
+            Copyright © 2023 Peepachu
+        </footer>
+    )
 }
 
 export default Footer;

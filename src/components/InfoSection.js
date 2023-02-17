@@ -1,33 +1,31 @@
-import React, {Component} from "react";
+import React from "react";
 
-class InfoSection extends Component {
+function InfoSection(props) {
     
-    render() {
-        const {heading, fieldsets, handleChange, canAddDel, handleAdd, handleDelete} = this.props;
+    const {heading, fieldsets, handleChange, canAddDel, handleAdd, handleDelete} = props;
 
-        return (
-            <section className="formSection">
-                <h2>{heading}</h2>
-                {fieldsets.map(fieldset => (
-                    <fieldset key={fieldset.id}>
-                        {fieldset.data.map(field => (
-                            <input 
-                                type={field.type} 
-                                placeholder={field.placeholder} 
-                                onChange={(e) => {handleChange(e, fieldset.id)}} 
-                                name={field.name}
-                                value={field.value}
-                                key={field.name}
-                                required
-                            />
-                        ))}
-                        {canAddDel && <button type="button" onClick={() => {handleDelete(fieldset.id)}}>Delete</button>}
-                    </fieldset>
-                ))}
-                {canAddDel && <button type="button" onClick={() => {handleAdd(heading)}}>Add</button>}
-            </section>
-        )
-    }
+    return (
+        <section className="formSection">
+            <h2>{heading}</h2>
+            {fieldsets.map(fieldset => (
+                <fieldset key={fieldset.id}>
+                    {fieldset.data.map(field => (
+                        <input 
+                            type={field.type} 
+                            placeholder={field.placeholder} 
+                            onChange={(e) => {handleChange(e, fieldset.id)}} 
+                            name={field.name}
+                            value={field.value}
+                            key={field.name}
+                            required
+                        />
+                    ))}
+                    {canAddDel && <button type="button" onClick={() => {handleDelete(fieldset.id)}}>Delete</button>}
+                </fieldset>
+            ))}
+            {canAddDel && <button type="button" onClick={() => {handleAdd(heading)}}>Add</button>}
+        </section>
+    )
 }
 
 export default InfoSection;
