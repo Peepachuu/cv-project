@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import InfoSection from "./components/InfoSection";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -6,54 +6,47 @@ import "./styles/styles.css";
 import uniqid from "uniqid";
 import CVPreview from "./components/CVPreview";
 
-class App extends Component {
-    constructor() {
-        super();
+function App() {
 
-        this.defaultPersonal = [
+    const defaultPersonal = [
             {type: "text", placeholder: "First Name", name:"firstName", value:""},
             {type: "text", placeholder: "Last Name", name:"lastName", value:""}, 
             {type: "email", placeholder: "Email", name:"email", value:""},
             {type: "tel", placeholder: "Phone Number", name:"phoneNumber", value:""}
-        ];
+    ];
 
-        this.defaultEducation = [
+    const defaultEducation = [
             {type: "text", placeholder: "Title of qualification awarded", name:"Qualification", value:""},
             {type: "text", placeholder: "Organization that provided said title", name:"Organization", value:""}, 
             {type: "text", placeholder: "From", name:"startDate", value:""},
             {type: "text", placeholder: "To", name:"endDate", value:""}
-        ];
-        this.defaultWorkExp = [
+    ];
+    const defaultWorkExp = [
             {type: "text", placeholder: "Title of the occupation", name:"Occupation", value:""},
             {type: "text", placeholder: "Employer", name:"Employer", value:""}, 
             {type: "text", placeholder: "From", name:"startDate", value:""},
             {type: "text", placeholder: "To", name:"endDate", value:""}
-        ];
-        this.state = {
-            infosets: [
-                [ {data: this.clone(this.defaultPersonal), id: uniqid()} ],
-                [ {data: this.clone(this.defaultEducation), id: uniqid()} ],
-                [ {data: this.clone(this.defaultWorkExp), id: uniqid()} ]
-            ]
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleAdd = this.handleAdd.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-    }
+    ];
+        
+    const [infosets, setInfosets] = React.useState([
+        [ {data: clone(defaultPersonal), id: uniqid()} ],
+        [ {data: clone(defaultEducation), id: uniqid()} ],
+        [ {data: clone(defaultWorkExp), id: uniqid()} ]
+    ]);
 
-    clone(obj){
+    function clone(obj){
         if(obj == null || typeof(obj) != 'object')
             return obj;
     
         var temp = new obj.constructor(); 
         for(var key in obj)
-            temp[key] = this.clone(obj[key]);
+            temp[key] = clone(obj[key]);
     
         return temp;
     }
 
-    handleChange(e, id) {
-        this.setState({infosets: this.state.infosets.map(infoset => {
+    function handleChange(e, id) {
+        setInfosets(infosets.map(infoset => {
             return infoset.map(fieldset => {
                 if (fieldset.id === id) {
                     fieldset.data.map(field => {
@@ -65,85 +58,83 @@ class App extends Component {
                 }
                 return fieldset;
             });
-        })});
+        }));
     }
 
-    handleAdd(heading) {
+    function handleAdd(heading) {
         let pos;
         let dataToAdd;
         if (heading === "Personal Info") {
             pos = 0;
-            dataToAdd = this.clone(this.defaultPersonal);
+            dataToAdd = clone(defaultPersonal);
         }
         else if (heading === "Education and Training") {
             pos = 1;
-            dataToAdd = this.clone(this.defaultEducation);
+            dataToAdd = clone(defaultEducation);
         }
         else if (heading === "Work Experience") {
             pos = 2;
-            dataToAdd = this.clone(this.defaultWorkExp);
+            dataToAdd = clone(defaultWorkExp);
         }
-        let infosetsClone = this.clone(this.state.infosets);
+        let infosetsClone = clone(infosets);
         infosetsClone[pos].push({data: dataToAdd, id:uniqid()});
-        this.setState({infosets: infosetsClone});
+        setInfosets(infosetsClone);
     }
 
-    handleDelete(id) {
-        let infosetClone = this.clone(this.state.infosets);
-        this.setState({infosets : infosetClone.map(infoset => {
+    function handleDelete(id) {
+        let infosetClone = clone(infosets);
+        setInfosets(infosetClone.map(infoset => {
             return infoset.filter((fieldset) => fieldset.id !== id)
-        })});
+        }));
     }
 
-    render() {
-        return (
-            <section className="main">
-                <Header></Header>
-                <div className="container">
+    return (
+        <section className="main">
+            <Header></Header>
+            <div className="container">
                 <form>
                     <InfoSection 
-                        fieldsets={this.state.infosets[0]} 
+                        fieldsets={infosets[0]} 
                         heading="Personal Info"
-                        handleChange={this.handleChange}
-                        handleAdd={this.handleAdd}
-                        handleDelete={this.handleDelete}
+                        handleChange={handleChange}
+                        handleAdd={handleAdd}
+                        handleDelete={handleDelete}
                         canAddDel={false}
                     >
                     </InfoSection>
 
                     <InfoSection 
-                        fieldsets={this.state.infosets[1]} 
+                        fieldsets={infosets[1]} 
                         heading="Education and Training"
-                        handleChange={this.handleChange}
-                        handleAdd={this.handleAdd}
-                        handleDelete={this.handleDelete}
+                        handleChange={handleChange}
+                        handleAdd={handleAdd}
+                        handleDelete={handleDelete}
                         canAddDel={true}
                     >
                     </InfoSection>
 
                     <InfoSection 
-                        fieldsets={this.state.infosets[2]} 
+                        fieldsets={infosets[2]} 
                         heading="Work Experience"
-                        handleChange={this.handleChange}
-                        handleAdd={this.handleAdd}
-                        handleDelete={this.handleDelete}
+                        handleChange={handleChange}
+                        handleAdd={handleAdd}
+                        handleDelete={handleDelete}
                         canAddDel={true}
                     >
                     </InfoSection>
                 </form>
-                </div>
-                <div className="container">
+            </div>
+            <div className="container">
                 <CVPreview 
-                    personalInfo={this.state.infosets[0][0]}
-                    educationInfo={this.state.infosets[1]}
-                    experienceInfo={this.state.infosets[2]}
+                    personalInfo={infosets[0][0]}
+                    educationInfo={infosets[1]}
+                    experienceInfo={infosets[2]}
                 >
                 </CVPreview>
-                </div>
-                <Footer></Footer>
-            </section>
-        )
-    }
+            </div>
+            <Footer></Footer>
+        </section>
+    )
 }
 
 export default App;
